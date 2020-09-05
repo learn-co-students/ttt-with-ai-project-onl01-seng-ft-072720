@@ -12,13 +12,12 @@ class Board
 		@cells = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 	end
 
-    def display   
-        puts "XOXO|-----------------------------------------------------------------|OXOX"
-		puts "XOXO|                            #{@cells[0]} | #{@cells[1]} | #{@cells[2]}                            |OXOX"
-		puts "XOXO|                           -----------                           |OXOX"
-        puts "XOXO|                            #{@cells[3]} | #{@cells[4]} | #{@cells[5]}                            |OXOX"
-        puts "XOXO|                           -----------                           |OXOX"
-        puts "XOXO|                            #{@cells[6]} | #{@cells[7]} | #{@cells[8]}                            |OXOX"
+	def display
+		puts " #{@cells[0]} | #{@cells[1]} | #{@cells[2]} "
+		puts "-----------"
+        puts " #{@cells[3]} | #{@cells[4]} | #{@cells[5]} "
+        puts "-----------"
+        puts " #{@cells[6]} | #{@cells[7]} | #{@cells[8]} "
 	end
 
 	def position(input)
@@ -30,36 +29,36 @@ class Board
 		user_input.to_i - 1
 	end
 
-	def full?
-        if @cells.detect{|i| i == "" || i == " "}
-            return false
-        else
-            return true
-        end
+	 def full?
+     if @cells.detect{|i| i == "" || i == " "}
+       return false
+     else
+       return true
+     end
    end
 
     def turn_count
-        num_turns = 0
-        @cells.each do |space|
-            if space == "X" || space == "O"
-                num_turns += 1
-            end
-        end
-        return num_turns
-    end
+     num_turns = 0
+     @cells.each do |space|
+       if space == "X" || space == "O"
+         num_turns += 1
+       end
+     end
+     return num_turns
+   end
 
   	def taken?(loc)
-  	    loc = input_to_index(loc.to_i)
-        if(@cells[loc] == "X" || @cells[loc] == "O")
-     	    true
-        else
-     	    false
-        end
-    end
+  	 loc = input_to_index(loc.to_i)
+     if(@cells[loc] == "X" || @cells[loc] == "O")
+     	true
+     else
+     	false
+     end
+   end
 
-    def valid_move?(move)
-   	    move.to_i.between?(1, 9) && !taken?(move)
-    end
+   def valid_move?(move)
+   	 move.to_i.between?(1, 9) && !taken?(move)
+   end
 
    def update(move, player)
    		if(valid_move?(move))
