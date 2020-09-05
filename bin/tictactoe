@@ -3,7 +3,7 @@
 require_relative '../config/environment'
 
 puts "Welcome to Tic Tac Toe!"
-puts "How many players: 0, 1, 2?"
+puts "How many players: 1 (vs AI), 2 (vs Player)?"
 players = gets.strip
 
 if(players == "0")
