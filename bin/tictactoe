@@ -2,21 +2,22 @@
 
 require_relative '../config/environment'
 
-puts "Welcome to Tic Tac Toe!"
-puts "How many players: 1 (vs AI), 2 (vs Player)?"
+puts "XOXO|---------------------------- Welcome!----------------------------|OXOX"
+puts "XOXO|                 Let's play some Tic Tac Toe!                    |OXOX"
+puts "XOXO|     How many players: 0 (AI vs AI), 1 (vs AI), 2 (vs Player)?   |OXOX"
 players = gets.strip
 
-if(players == "0")
+if (players == "0")
     game = Game.new(Players::Computer.new("X"), Players::Computer.new("O"))
-elsif(players == "1")
+elsif (players == "1")
     player_1 = nil
-    puts "Who shall go first? Please type me or computer to choose"
+    puts "XOXO| Who shall go first? Please type 'I will' or 'AI will' to choose |OXOX"
     player_1 = gets.chomp
-    if(player_1 == "me")
+    if(player_1 == "I will")
         game = Game.new(Players::Human.new('X'), Players::Computer.new('O'))
     else 
         game = Game.new(Players::Computer.new('X'))
-    end
+    end    
 else 
     game = Game.new
 end	

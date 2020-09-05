@@ -54,7 +54,8 @@ class Game
 
         if board.valid_move?(move)
             board.update(move, current_player)
-        else
+        else            
+            puts "XOXO|          Oops! This cell is taken, please choose again.         |OXOX"
             turn
         end
         board.display
@@ -65,10 +66,10 @@ class Game
         while !over?
             turn
         end
-        if won?
-            puts "Congratulations #{winner}!"
+        if won?            
+            puts "XOXO|                        Congratulations #{winner}!                       |OXOX"
         else
-            puts "Cat's Game!"
+            puts "XOXO|                           Cat's Game!                           |OXOX"
         end
     end
 
