@@ -1,3 +1,26 @@
 #!/usr/bin/env ruby
 
 require_relative '../config/environment'
+
+puts "XOXO|---------------------------- Welcome!----------------------------|OXOX"
+puts "XOXO|                 Let's play some Tic Tac Toe!                    |OXOX"
+puts "XOXO|     How many players: 0 (AI vs AI), 1 (vs AI), 2 (vs Player)?   |OXOX"
+players = gets.strip
+
+if (players == "0")
+    game = Game.new(Players::Computer.new("X"), Players::Computer.new("O"))
+elsif (players == "1")
+    player_1 = nil
+    puts "XOXO| Who shall go first? Please type 'I will' or 'AI will' to choose |OXOX"
+    player_1 = gets.chomp
+    if(player_1 == "I will")
+        game = Game.new(Players::Human.new('X'), Players::Computer.new('O'))
+    else 
+        game = Game.new(Players::Computer.new('X'))
+    end    
+else 
+    game = Game.new
+end	
+
+game.board.display
+game.play
